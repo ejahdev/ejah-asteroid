@@ -244,10 +244,6 @@ function checkCollisions() {
                 screenShakeMagnitude = 20; // Adjust the magnitude as needed
                 screenShakeDuration = 10; // Adjust the duration as needed
 
-                // Add log statements to check the values of screenShakeMagnitude and screenShakeDuration
-                console.log('Screen Shake Magnitude:', screenShakeMagnitude);
-                console.log('Screen Shake Duration:', screenShakeDuration);
-
                 // Remove the colliding asteroid
                 asteroids.splice(i, 1);
 
@@ -391,10 +387,21 @@ function draw() {
         ctx.stroke();
     }
 
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'yellowgreen';
     ctx.font = "24px Arial";
-    ctx.fillText('Score: ' + score, 20, 20);
-    ctx.fillText('Lives: ' + lives, 20, 50);
+    ctx.fillText(' Score: ' + score, 20, 20);
+    ctx.fillText(' Ships: ', 20, 50);
+
+    // Define a different fill style for the number of lives
+    ctx.fillStyle = 'red'; // Change the color to your desired color
+
+    // Draw the number of lives
+    ctx.fillText(lives, 20 + ctx.measureText(' Ships: ').width, 50);
+
+    ctx.fillStyle = 'rgba(144, 238, 144, 0.3)'; // Yellowgreen with opacity
+    ctx.font = "36px 'Baloo', cursive"; // Larger font size
+    ctx.fillText('{ /ejahdev }', canvas.width - 200, canvas.height - 20); // Bottom right corner
+
 }
 
 setInterval(createAsteroid, 1000);
